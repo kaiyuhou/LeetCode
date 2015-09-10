@@ -1,0 +1,7 @@
+Determine whether an integer is a palindrome. Do this without extra space.
+
+# 题意
+判断一个整数是不是回文数
+
+# 题解
+使用python中的切片操作。 转化为字符串后，str[::-1]可以反转一个数组
