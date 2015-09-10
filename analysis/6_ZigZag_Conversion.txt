@@ -21,3 +21,6 @@ convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
 对于中间行分奇数列和偶数列讨论
 	对于奇数列，和上一个字符的间隔是 2 * (numRows - 1 - i)
 	对于偶数列，和上一个字符的间隔是 2 * current row
+
+==Tips==
+特判一个 numRows = 1 的情况

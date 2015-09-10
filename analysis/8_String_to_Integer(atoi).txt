@@ -1,0 +1,14 @@
+Implement atoi to convert a string to an integer.
+
+==题目==
+写一个atoi函数
+
+==题解==
+直接逐字符判断
+
+其实更高端一点可以用自动机来做
+
+==Tips==
+s.strip（）可以去除前后导的空格
+如果非法，返回0
+在数字后跟有非数字字符，不认为非法

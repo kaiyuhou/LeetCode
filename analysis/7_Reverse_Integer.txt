@@ -1,0 +1,13 @@
+Reverse digits of an integer.
+
+Example1: x = 123, return 321
+Example2: x = -123, return -321
+
+==题意==
+反转数字
+
+==题解==
+我是直接用运算来反转的，不知道是否有更巧妙的方法
+
+==Tips==
+面试的时候遇到这种题应该先问边界！！！
