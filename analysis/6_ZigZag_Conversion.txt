@@ -1,0 +1,23 @@
+==题目==
+
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+P   A   H   N
+A P L S I I G
+Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+Write the code that will take a string and make this conversion given a number of rows:
+
+string convert(string text, int nRows);
+convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
+
+==题意==
+
+一个字符串用 Zigzag 的模式，然后转化为横写的模式。
+
+==题解==
+
+第一行和最后一行的计算格式是 2 * numRows - 2
+对于中间行分奇数列和偶数列讨论
+	对于奇数列，和上一个字符的间隔是 2 * (numRows - 1 - i)
+	对于偶数列，和上一个字符的间隔是 2 * current row
