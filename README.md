@@ -6,3 +6,4 @@ The answers for LeetCode
  - character: 6, 8, 9, 76, 13, 14
  - recursive: 70
  - List: 19
+ - Stack: 20
