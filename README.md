@@ -5,3 +5,4 @@ The answers for LeetCode
  - binary: 67
  - character: 6, 8, 9, 76, 13, 14
  - recursive: 70
+ - List: 19
