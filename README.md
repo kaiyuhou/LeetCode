@@ -1,7 +1,7 @@
 # LeetCode
 The answers for LeetCode
 
- - digit operation: 7, 66, 190
+ - digit operation: 7, 66, 190, 191
  - binary: 67
  - String: 6, 8, 9, 76, 13, 14, 36, 38, 58, 125
  - recursive: 70
