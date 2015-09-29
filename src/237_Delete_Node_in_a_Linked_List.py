@@ -20,20 +20,6 @@ class ListNode(object):
 
 class Solution(object):
     def deleteNode(self, node):
-        """
-        :type node: ListNode
-        :rtype: void Do not return anything, modify node in-place instead.
-        """
-#        dumb = ListNode(-1)        
-#        dumb.next = node        
-#        p = dumb
-#        q = dumb.next
-#        
-#        while q.next:
-#            p = p.next
-#            q = q.next
-#            p.val = q.val
-#        p.next = None
         node.val = node.next.val
         node.next = node.next.next
         

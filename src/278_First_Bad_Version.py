@@ -7,11 +7,7 @@ Created on Mon Sep 28 11:14:16 2015
 
 class Solution(object):
     def firstBadVersion(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        l = 1
+		l = 1
         r = n
         while r > l:
             m = (l + r) / 2
