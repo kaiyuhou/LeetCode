@@ -1,0 +1,33 @@
+Given a sorted array of integers, find the starting and ending position of a given target value.
+
+Your algorithm's runtime complexity must be in the order of O(log n).
+
+If the target is not found in the array, return [-1, -1].
+
+For example,
+Given [5, 7, 7, 8, 8, 10] and target value 8,
+return [3, 4].
+
+### 题意
+给定一个有重复的升序数组和一个数
+求这个数在数组中出现的范围
+
+### 题解
+最基本的想法是两遍二分搜索，找左右边界，但是具体怎么两遍需要想一下
+
+第一种解法是，二分找target+0.5 和 -0.5的位子，就可以找到左右边界
+
+第二种的好好的去找
+ there are three possibilities:
+If A[mid] < target, then the range must begins on the right of mid (hence i = mid+1 for the next iteration)
+If A[mid] > target, it means the range must begins on the left of mid (j = mid-1)
+If A[mid] = target, then the range must begins on the left of or at mid (j= mid)
+
+所以在找左边界的时候，只做
+if nums[mid] < target:
+	l = mid + 1
+的判断
+对于右边界也同理，只做
+if nums[mid] > target:
+    r = mid - 1
+的判断

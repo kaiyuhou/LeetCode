@@ -1,0 +1,11 @@
+Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+### 题目
+给定一个数组的，给出全排列的下一个数
+
+### 题解
+从后向前，先找到第一个下降的数 a
+然后再从后向前，到第一个比 a 大的数 b
+交换 a 和 b，把位置a之后的数组反转

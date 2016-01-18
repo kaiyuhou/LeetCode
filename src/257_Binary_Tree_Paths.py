@@ -34,7 +34,7 @@ class Solution(object):
         return ans            
         
 testcase = TreeNode(4)
-a = []#[2,7,1,3,6,9]
+a = [2,7,1,3,6,9]
 que = [testcase]
 i = 0
 while i < len(a):
