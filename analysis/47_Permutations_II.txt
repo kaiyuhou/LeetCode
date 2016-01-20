@@ -1,0 +1,21 @@
+Given a collection of numbers that might contain duplicates, return all possible unique permutations.
+
+### 题意
+
+给定一个有重复的数组，给出它所以全排列的可能
+
+### 题解
+ 
+对于不用递归回溯的解法
+添加一个针对插入点的判断，如果插入点的数等于要插入的数，就取消这次插入
+（这样左右两次等价插入就只插了一次）
+
+对于递归的写法，我还真没有想到
+
+Discuss里面给了一种解法：
+
+		for (int k = i; k < j; k++) {
+            if (i != k && num[i] == num[k]) continue;
+            swap(num[i], num[k]);
+            recursion(num, i+1, j, res);
+        }
