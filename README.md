@@ -7,7 +7,7 @@ analysis include the analysis of each problems which I accepted
  - binary: 67
  - String: 6, 8, 9, 76, 12, 13, 14, 36, 38, 58, 125, 242, 290, 299
  - recursive: 70
- - backtracking: 17, 22, 39
+ - backtracking: 17, 22, 39, 40
  
  - List: 2, 19, 21, 82, 83, 160, 203, 206, 234, 237, 24 
  - Stack: 20, 232
