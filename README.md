@@ -5,7 +5,7 @@ analysis include the analysis of each problems which I accepted
 
  - digit operation: 7, 66, 190, 191, 202, 231, 41
  - binary: 67
- - String: 6, 8, 9, 76, 12, 13, 14, 36, 38, 58, 125, 242, 290, 299
+ - String: 6, 8, 9, 76, 12, 13, 14, 36, 38, 58, 125, 242, 290, 299, 49
  - recursive: 70
  - backtracking: 17, 22, 39, 40, 46, 47
  
@@ -26,6 +26,7 @@ analysis include the analysis of each problems which I accepted
  - Geometry: 223
  - Math: 258, 263, 29
  - Nim Game: 292
+ - Pow: 50
  
  
  > need to review: 204
