@@ -1,10 +1,23 @@
-f = open("a.txt", "a")
+from random import random
 
-for i in range(200):
-    f.write("0 ADD_NODE %d\n" % i)
+good = 1
+bad = 0
 
-for i in range(199):
-    f.write("0 ADD_LINK %d %d 1\n" % (i, i+1))
+class Calculator:
+    class gemstone:
+        def __init__(self, level=1, details=[good, good, good]):
+            self.level = level
+            self.details = details
 
-for i in range(198):
-    f.write("0 ADD_LINK %d %d 3\n" % (i, i + 2))
+    def __init__(self):
+        pass
+
+    def get_level_2_same_4(self, main, follow):
+
+    def get_level_3_same_5(self):
+        self.get_level_2_same_4()
+
+
+
+c = Calculator()
+print(random())
