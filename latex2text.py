@@ -35,11 +35,20 @@ def parse(S: str):
     return S
 
 if __name__ == '__main__':
-    S = r'''Not much research literature focuses on emergency call systems. 
-RFC 5096~\cite{RFC5069} summarized the security threats that emergency call systems might encounter in a conceptual manner. Those threats include leakage and falsification of location and personal information, as well as abuse of anonymity and priority privileges. 
-% However, no actual attack or defense approaches are discussed in it.
-The chance of the DDoS attack on 911 services by leveraging the anonymity privilege has been mentioned in \cite{guri_911DDoS, onofrei2010_DDoS_911}. 
-% Guri \textit{et al.} estimated that, with 6,000 bots, 911 services in a state can be blocked for a whole day \cite{guri_911DDoS}.
-Based on the estimation of~\cite{guri_911DDoS}, with 6,000 bots, 911 emergency services in a U.S. state can be blocked for a whole day.
-Rebahi \textit{et al.}~\cite{fokus_attack} proposed an attack in current 3GPP's scheme, that an adversary can impersonate PSAPs. '''
+    S = r'''\textcircled{2} \textit{Symbolic Analysis}.
+The whole state space may be prohibitively large, especially for those systems involving cryptographic algorithms.
+The symbolic analysis employs predefined reduction rules to save efforts in verification. 
+% Authentication and key agreement (AKA) is a cryptographic protocol used in 3GPP networks. 
+% To check its security, 
+A lot of works \cite{3gpp33902, arapinis2012new, basin2018formal5G, cremers2019component} applied modern symbolic provers, like ProVerif~\cite{blanchet2016modeling} and Tamarin~\cite{basin2017symbolically}, on AKA protocols used in 3G, 4G, and 5G. 
+Nevertheless, cryptographic related procedures constitute only a small portion of cellular network protocols, and those methods cannot be generalized to other procedures.}
+
+\new{\textcircled{3} \textit{Software Analysis}.
+Software analysis aims to directly verify the implementations, as that can save time and efforts of building a model manually. 
+% If the software implementation of cellular protocols is available, it would seem attractive to directly perform the formal software analysis, as that can save time and efforts to build a model manually.
+}
+For instance, Pi \textit{et al.} \cite{tencent2018exploring} extracted binary codes from a Qualcomm baseband and recompiled them to perform static analysis and debugging. Yu \textit{et al.} \cite{yu2019cellscope} ran software model checking on open-source cellular protocol emulators. 
+However, one implementation is only a single instance of the protocols, so it can not reflect other implementations. 
+\new{
+In comparison, our approach is based upon protocols. It targets problems on a higher level and can be adapted to many instances.'''
     print(parse(S))
