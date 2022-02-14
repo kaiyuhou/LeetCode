@@ -6,9 +6,9 @@ class TreeNode:
 
 
 class ListNode:
-    def __init__(self, x):
+    def __init__(self, x, next=None):
         self.val = x
-        self.next = None
+        self.next = next
 
 def list_to_tree(A):
     n = len(A)
@@ -105,6 +105,31 @@ def tree_to_list(root):
         ans.pop()
 
     return ans
+
+
+def array_to_list(arr):
+    if not arr:
+        return None
+    head = ListNode(arr[0], None)
+    cur = head
+    for i in range(1, len(arr)):
+        cur.next = ListNode(arr[i], None)
+        cur = cur.next
+    return head
+
+
+def list_to_array(head):
+    ans = []
+    while head:
+        ans.append(head.val)
+        head = head.next
+    return ans
+
+
+
+
+
+
 
 
 
