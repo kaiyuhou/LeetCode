@@ -1,23 +1,19 @@
 #!/usr/bin/env python
+from __future__ import division, print_function
+
 import os
 import sys
 from io import BytesIO, IOBase
-# sys.setrecursionlimit(100000)
 
-import collections
-import math
-
-from functools import lru_cache
+if sys.version_info[0] < 3:
+    from __builtin__ import xrange as range
+    from future_builtins import ascii, filter, hex, map, oct, zip
 
 
 def main():
-    T = int(input())
-    for _ in range(T):
-        n = int(input())
-        A = list(map(int, input().split()))
+    pass
 
 
-##################################
 # region fastio
 
 BUFSIZE = 8192
@@ -68,10 +64,39 @@ class IOWrapper(IOBase):
         self.readline = lambda: self.buffer.readline().decode("ascii")
 
 
-sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
+def print(*args, **kwargs):
+    """Prints the values to a stream, or to sys.stdout by default."""
+    sep, file = kwargs.pop("sep", " "), kwargs.pop("file", sys.stdout)
+    at_start = True
+    for x in args:
+        if not at_start:
+            file.write(sep)
+        file.write(str(x))
+        at_start = False
+    file.write(kwargs.pop("end", "\n"))
+    if kwargs.pop("flush", False):
+        file.flush()
+
+
+def gcd(x, y):
+    """ greatest common divisor of x and y """
+    while y:
+        x, y = y, x % y
+    return x
+
+
+if sys.version_info[0] < 3:
+    sys.stdin, sys.stdout = FastIO(sys.stdin), FastIO(sys.stdout)
+else:
+    sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
+
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 # endregion
 
 if __name__ == "__main__":
     main()
+
+
+
+

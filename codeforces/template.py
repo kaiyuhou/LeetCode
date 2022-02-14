@@ -5,8 +5,10 @@ from functools import lru_cache
 from sys import stdin, stdout, setrecursionlimit
 
 input = stdin.readline
-print = lambda s: stdout.write(str(s) + '\n')
+
+# print = lambda s: stdout.write(str(s) + '\n')
 # setrecursionlimit(100000)
+
 
 
 def main():

@@ -3,28 +3,7 @@ from functools import lru_cache
 from sys import stdin, stdout
 input = stdin.readline
 print = lambda s: stdout.write(str(s) + '\n')
- 
 
-from types import GeneratorType
- 
-def bootstrap(f, stack=[]):
-    def wrappedfunc(*args, **kwargs):
-        if stack:
-            return f(*args, **kwargs)
-        else:
-            to = f(*args, **kwargs)
-            while True:
-                if type(to) is GeneratorType:
-                    stack.append(to)
-                    to = next(to)
-                else:
-                    stack.pop()
-                    if not stack:
-                        break
-                    to = stack[-1].send(to)
-            return to
- 
-    return wrappedfunc
 
 def main():
     n = int(input())
@@ -41,8 +20,7 @@ def main():
     root = H.index(max(H))
     
     ans = 0
-    
-    @bootstrap
+
     def dfs(u, p):
         nonlocal ans
         
