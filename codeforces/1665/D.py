@@ -1,3 +1,11 @@
+# Problem: D. GCD Guess
+# Contest: Codeforces - Codeforces Round #781 (Div. 2)
+# URL: https://codeforces.com/contest/1665/problem/D
+# Memory Limit: 256 MB
+# Time Limit: 3000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,12 +19,22 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
         # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        ans = 0
+        for i in range(0, 30):
+            a = 1 << i
+            b = (1 << (i + 1)) + (1 << i)
+            a -= ans
+            b -= ans
+            print(f'? {a} {b}')
+            sys.stdout.flush()
+            n = int(input())
+            if n % (1 << (i + 1)) == 0:
+                ans += (1 << i)
+        print(f'! {ans}')
+        sys.stdout.flush()    
 
 
 ##################################

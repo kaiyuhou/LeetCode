@@ -1,3 +1,11 @@
+# Problem: B2. Tokitsukaze and Good 01-String (hard version)
+# Contest: Codeforces - Codeforces Round #789 (Div. 2)
+# URL: https://codeforces.com/contest/1678/problem/B2
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -16,7 +24,73 @@ def main():
     for _ in range(T):
         # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        S = input()
+
+        def f(S):
+            n = len(S)
+            last = S[0]
+            cnt = 1
+            A = []
+            C = []
+            for i in range(1, n):
+                if last != S[i]:
+                    A.append(cnt)
+                    C.append(last)
+                    cnt = 1
+                    last = S[i]
+                else:
+                    cnt += 1
+            A.append(cnt)
+            C.append(last)
+            # print(A)
+            
+            ans = 0
+            seg = 0
+            last_c = '2'
+            
+            
+            
+            for i in range(len(A) - 1):
+                if A[i] == 0:
+                    continue
+                if A[i] == 1:
+                    if C[i] == last_c:
+                        A[i] = 0
+                        A[i + 1] -= 1
+                        ans += 1
+                    else:
+                        A[i] = 0
+                        A[i + 1] += 1
+                        ans += 1
+                    continue
+                
+                if last_c != C[i]:
+                    seg += 1
+                    last_c = C[i]
+                
+    
+                if A[i] % 2 == 1:
+    
+                    A[i] += 1
+                    if A[i + 1] == 1:
+                        ans += 1
+                        A[i + 1] = 0
+                    elif A[i + 1] == 2:
+                        ans += 2
+                        A[i + 1] = 0
+                        A[i + 2] += 1
+                    else:
+                        ans += 1
+                        A[i + 1] -= 1
+                # print(A)
+            if A[-1] > 0:
+                if last_c != C[-1]:
+                    seg += 1
+            return ans, seg
+        ans, seg1 = f('1111' + S)
+        ans, seg2 = f('0000' + S)
+        # seg2 = 20
+        print(ans, min(seg1, seg2))
 
 
 ##################################

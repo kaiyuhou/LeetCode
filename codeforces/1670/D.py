@@ -1,3 +1,11 @@
+# Problem: D. Very Suspicious
+# Contest: Codeforces - Codeforces Round #788 (Div. 2)
+# URL: https://codeforces.com/contest/1670/problem/D
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -6,17 +14,28 @@ from io import BytesIO, IOBase
 
 import collections
 import math
+import bisect
 
 from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
+    ans = []
+    sum = 0
+    A = [0, 0, 0]
+    n = 1000000005
+    idx = 0
+    while sum < n:
+        A[idx % 3] += 1
+        sum += (A[(idx + 1) % 3] + A[(idx + 2) % 3]) * 2
+        idx += 1
+        ans.append(sum)
+
     T = int(input())
     for _ in range(T):
         # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        print(bisect.bisect_left(ans, n) + 1)
 
 
 ##################################

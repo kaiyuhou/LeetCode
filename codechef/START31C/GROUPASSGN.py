@@ -1,3 +1,11 @@
+# Problem: Group Assignment
+# Contest: CodeChef - CodeChef Starters 31 Division 3 (Rated)
+# URL: https://www.codechef.com/START31C/problems/GROUPASSGN
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,15 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        n, x = map(int, input().split())
+        print(2 * n - x + 1)
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

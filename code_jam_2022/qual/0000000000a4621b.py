@@ -1,3 +1,11 @@
+# Problem: Punched Cards
+# Contest: Google Coding Competitions - Qualification Round 2022 - Code Jam 2022
+# URL: https://codingcompetitions.withgoogle.com/codejam/round/0000000000876ff1/0000000000a4621b
+# Memory Limit: 1024 MB
+# Time Limit: 5000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,27 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
-    for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
-
+    for t in range(T):
+        r, c = map(int, input().split())
+        print(f'Case #{t + 1}:')
+        
+        line1 = ['+' for _ in range(c + 1)]
+        s1 = '-'.join(line1)
+        line2 = ['|' for _ in range(c + 1)]
+        s2 = '.'.join(line2)
+        for i in range(r):
+            if i == 0:
+                print('..' + s1[2:])
+                print('..' + s2[2:])
+            else:
+                print(s1)
+                print(s2)
+        print(s1)
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

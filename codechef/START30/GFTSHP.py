@@ -1,3 +1,11 @@
+# Problem: Gift Shop and Coupon
+# Contest: CodeChef - CodeChef Starters 30 Division 3 (Rated)
+# URL: https://www.codechef.com/START30C/problems/GFTSHP
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,33 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
+        n, k = map(int, input().split())
         A = list(map(int, input().split()))
+        A.sort()
+        coupon = True
+
+        ans = 0
+        for a in A:
+            if a <= k:
+                ans += 1
+                k -= a
+            else:
+                if k * 2 >= a:
+                    ans += 1
+                break
+        print(ans)
+            
+            
+        
+        
+
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

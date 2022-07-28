@@ -1,3 +1,11 @@
+# Problem: Car Choice
+# Contest: CodeChef - CodeChef Starters 28 Division 4 (Rated)
+# URL: https://www.codechef.com/START28D/problems/CARCHOICE
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,23 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        x1, x2, y1, y2 = map(int, input().split())
+        Car1 = x1 / y1
+        Car2 = x2 / y2
+        if Car1 == Car2:
+            print(0)
+        elif Car1 > Car2:
+            print(-1)
+        else:
+            print(1)
+        
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

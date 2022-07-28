@@ -1,30 +1,72 @@
-#!/usr/bin/env python
+# Problem: D. Infinite Set
+# Contest: Codeforces - Codeforces Round #772 (Div. 2)
+# URL: https://codeforces.com/contest/1635/problem/D
+# Memory Limit: 256 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 import os
 import sys
 from io import BytesIO, IOBase
 # sys.setrecursionlimit(100000)
 
-import collections
-import math
-
-from functools import lru_cache
-
-
 def main():
-    MOD = 1000000007
-    T = int(input())
-    for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
-
-
+    n, p = map(int, input().split())
+    mod = 1000000007
+    A = list(map(int, input().split()))
+    A.sort()
+    
+    dp = [0] * (p + 3)
+    dp_ans = [0] * (p + 3)
+    
+    dp[0] = 1
+    dp_ans[0] = 1
+    
+    dp[1] = 1
+    dp_ans[1] = 2
+    
+    dp[2] = 2
+    dp_ans[2] = 4
+    
+    for i in range(3, p + 1):
+        dp[i] = (dp[i - 1] + dp[i - 2]) % mod
+        dp_ans[i] = (dp_ans[i - 1] + dp[i]) % mod
+        
+    # print(dp)
+    # print(dp_ans)
+    
+    V = set()
+    ans = 0
+    for a in A:
+        b = a
+        flag = False
+        while b:
+            if b in V:
+                flag = True
+                break
+            if b % 2 == 0 and b % 4 != 0:
+                break
+            
+            if b % 4 == 0:
+                b //= 4
+            elif b % 2 == 1:
+                b //= 2
+        
+        # print(a, flag)
+        if not flag:
+            V.add(a)
+            len_a = len(bin(a)) - 2
+            if len_a > p:
+                continue
+            ans += dp_ans[p - len_a]
+            ans %= mod
+            
+    print(ans)
+    
+        
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
-##################################
-
+# region fastio
 
 BUFSIZE = 8192
 

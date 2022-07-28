@@ -1,3 +1,11 @@
+# Problem: Mexy Array
+# Contest: CodeChef - CodeChef Starters 31 Division 3 (Rated)
+# URL: https://www.codechef.com/START31C/problems/MEXYARR
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,55 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        B = list(map(int, input().split()))
+        
+        last = 0
+        ans = 0
+        for i, b in enumerate(B):
+            if b == -1:
+                continue
+            if b > i + 1:
+                ans = -1
+                break
+            if b < last:
+                ans = -1
+                break
+            last = b
+        
+        if ans == -1:
+            print(-1)
+            continue
+        
+        cur = 0 # cur mex value
+        ans = [0] * n
+        todo = collections.deque()
+        
+        for i, b in enumerate(B):
+            if b == cur or b == -1:
+                todo.append(i)
+                continue
+            if cur + 1 == b:
+                ans[i] = cur
+                cur += 1
+            else:
+                ans[i] = cur
+                for j in range(cur + 1, b):
+                    idx = todo.popleft()
+                    ans[idx] = j
+                cur = b
+        while todo:
+            idx = todo.popleft()
+            ans[idx] = cur + 2
+        
+        print(*ans)        
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

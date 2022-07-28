@@ -1,3 +1,11 @@
+# Problem: A. Tokitsukaze and All Zero Sequence
+# Contest: Codeforces - Codeforces Round #789 (Div. 2)
+# URL: https://codeforces.com/contest/1678/problem/0
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -17,6 +25,16 @@ def main():
         # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        # A.sort()
+        C = collections.Counter(A)
+        if 0 in C.keys():
+            print(n - C[0])
+        else:
+            _, cm = C.most_common(1)[0]
+            if cm > 1:
+                print(n)
+            else:
+                print(n + 1)
 
 
 ##################################

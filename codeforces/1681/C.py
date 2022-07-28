@@ -1,3 +1,11 @@
+# Problem: C. Double Sort
+# Contest: Codeforces - Educational Codeforces Round 129 (Rated for Div. 2)
+# URL: https://codeforces.com/contest/1681/problem/C
+# Memory Limit: 256 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -17,6 +25,61 @@ def main():
         # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        B = list(map(int, input().split()))
+
+        if A == sorted(A) and B == sorted(B):
+            print("0")
+            continue
+
+        flag = False
+        for i in range(n):
+            for j in range(n):
+                if A[i] > A[j] and B[i] < B[j]:
+
+
+                    flag = True
+                if A[i] < A[j] and B[i] > B[j]:
+                    flag = True
+        if flag:
+            print("-1")
+            continue
+        
+        
+        C = [(A[i], i) for i in range(n)]
+        C.sort()
+        Pos = [C[i][1] for i in range(n)]
+        
+        ans = []
+        for i in range(n):
+            if Pos[i] == i:
+                continue
+            ans.append((Pos[i], i))
+            A[Pos[i]], A[i] = A[i], A[Pos[i]]
+            B[Pos[i]], B[i] = B[i], B[Pos[i]]
+            
+            for j in range(i + 1, n):
+                if Pos[j] == i:
+                    Pos[j] = Pos[i]
+         
+        C = [(B[i], i) for i in range(n)]
+        C.sort()
+        Pos = [C[i][1] for i in range(n)]
+        
+        for i in range(n):
+            if Pos[i] == i:
+                continue
+            ans.append((Pos[i], i))
+            A[Pos[i]], A[i] = A[i], A[Pos[i]]
+            B[Pos[i]], B[i] = B[i], B[Pos[i]]
+            
+            for j in range(i + 1, n):
+                if Pos[j] == i:
+                    Pos[j] = Pos[i]
+        
+        print(len(ans))
+        for a, b in ans:
+            print(a + 1, b + 1)
+
 
 
 ##################################

@@ -1,3 +1,11 @@
+# Problem: The Unchanging OR
+# Contest: CodeChef - CodeChef Starters 31 Division 3 (Rated)
+# URL: https://www.codechef.com/START31C/problems/UNCHANGEDOR
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,26 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        n += 1
+        ans = 0
+        cur = 1
+        last = 0
+        while cur < n:
+            ans += (cur << 1) - (cur) - 1
+            # print(ans)
+            cur <<= 1
+            # print(cur)
+        ans -= cur - n
+        # print('ans')
+        print(ans)
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

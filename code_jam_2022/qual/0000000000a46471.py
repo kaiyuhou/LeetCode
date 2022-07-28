@@ -1,3 +1,11 @@
+# Problem: d1000000
+# Contest: Google Coding Competitions - Qualification Round 2022 - Code Jam 2022
+# URL: https://codingcompetitions.withgoogle.com/codejam/round/0000000000876ff1/0000000000a46471
+# Memory Limit: 1024 MB
+# Time Limit: 5000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,25 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
-    for _ in range(T):
+    for t in range(T):
         # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        A.sort()
+        cur = 1
+        ans = 0
+        for a in A:
+            if a < cur:
+                continue
+            ans += 1
+            cur += 1
+        print(f'Case #{t + 1}: {ans}')
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

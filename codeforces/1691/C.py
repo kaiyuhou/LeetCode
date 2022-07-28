@@ -1,3 +1,11 @@
+# Problem: C. Sum of Substrings
+# Contest: Codeforces - CodeCraft-22 and Codeforces Round #795 (Div. 2)
+# URL: https://codeforces.com/contest/1691/problem/C
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -14,9 +22,49 @@ def main():
     MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        n, k = map(int, input().split())
+        # n = int(input())
+        S = input()
+        # A = list(map(int, input().split()))
+        C = collections.Counter(S)
+        if C['1'] == 0:
+            print(0) 
+            continue
+        
+        ans = 0
+        for i in range(n - 1):
+            if S[i:i+2] == '01':
+                ans += 1
+            elif S[i:i+2] == '11':
+                ans += 11
+            elif S[i:i+2] == '10':
+                ans += 10
+                
+        if C['1'] == 1:
+            idx = S.index('1')
+            if S[n - 1] != '1':
+                to_right = n - 1 - idx
+                if to_right <= k:
+                    print(1)
+                    continue
+            if S[0] != '1' and S[n - 1] != '1':
+                to_left = idx
+                if to_left <= k:
+                    print(10)
+                    continue
+            print(ans)
+            continue
+        
+        if S[n - 1] != '1':
+            idx = S[::-1].index('1')
+            if idx <= k:
+                k -= idx
+                ans -= 10
+        if S[0] != '1':
+            idx = S.index('1')
+            if idx <= k:
+                ans -= 1
+        print(ans)
 
 
 ##################################

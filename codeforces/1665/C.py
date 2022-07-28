@@ -1,3 +1,11 @@
+# Problem: C. Tree Infection
+# Contest: Codeforces - Codeforces Round #781 (Div. 2)
+# URL: https://codeforces.com/contest/1665/problem/C
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,12 +19,34 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        C = collections.Counter(A)
+        ans = 0
+        todo = [1]
+        nxt = []
+        for _, v in C.items():
+            todo.append(v)
+        todo.sort(reverse=True)
+        
+        for a in todo:
+            nxt = [b - 1 for b in nxt if b > 1]
+            ans += 1
+            if a > 1:
+                nxt.append(a - 1)
+        
+        while len(nxt) > 0:
+            maxn = max(nxt)
+            if maxn > 1:
+                nxt[nxt.index(maxn)] -= 1
+            nxt = [b - 1 for b in nxt if b > 1]
+            ans += 1
+        print(ans)
+
+       
+
 
 
 ##################################

@@ -1,3 +1,11 @@
+# Problem: Increase 2 consecutive characters
+# Contest: CodeChef - CodeChef Starters 29 Division 4 (Rated)
+# URL: https://www.codechef.com/START29D/problems/CCD
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,31 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        n, q = map(int, input().split())
+        A = input()
+        B = input()
+        dp = [0] * n
+        if A[n - 1] == B[n - 1]:
+            dp[n - 1] = n - 1
+        else:
+            dp[n - 1] = n - 2
+        
+        
+        for i in range(n - 2, -1, -1):
+        
+        
+        
+        
+        
+        
+        
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

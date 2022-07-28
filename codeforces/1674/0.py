@@ -1,3 +1,11 @@
+# Problem: A. Number Transformation
+# Contest: Codeforces - Codeforces Round #786 (Div. 3)
+# URL: https://codeforces.com/contest/1674/problem/0
+# Memory Limit: 512 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,12 +19,15 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        x, y = map(int, input().split())
+        if x > y or y % x != 0:
+            print(0, 0)
+        else:
+            print(1, y // x)
+        
+        
 
 
 ##################################

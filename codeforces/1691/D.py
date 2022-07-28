@@ -1,3 +1,11 @@
+# Problem: D. Max GEQ Sum
+# Contest: Codeforces - CodeCraft-22 and Codeforces Round #795 (Div. 2)
+# URL: https://codeforces.com/contest/1691/problem/D
+# Memory Limit: 256 MB
+# Time Limit: 1500 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -17,7 +25,79 @@ def main():
         # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        ans = True
+        for i in range(n - 1):
+            if A[i] > 0 and A[i + 1]> 0:
+                print('NO')
+                ans = False
+        if not ans:
+            continue
 
+        B = [A[0]]
+        for i in range(1, n):
+            if A[i] <= 0 and B[-1] <= 0:
+                B[-1] += A[i]
+            else:
+                B.append(A[i])
+        
+        if B[0] <= 0:
+            B = B[1:]
+        if B[-1] <= 0
+            B = B[:-1]
+            
+        C = []
+        for i, b in enumerate(B):
+            
+            
+        
+            
+
+
+        
+        A = B
+        n = len(B)
+
+        last = A[0]
+        ma = A[0]
+
+        for i in range(1, n):
+            a = A[i]
+            if a > 0:
+                if last <= 0:
+                    last = a
+                    ma = a
+                else:
+                    if (last + a) > max(ma, a):
+                        ans = False
+                        break
+                    if a > abs(A[i-1]):
+                        ans = False
+                        break
+                      
+                    last = last + a
+                    ma = max(ma, a)
+            else:
+                if last + a <= 0:
+                    last = a
+                    ma = 0
+                else:
+                    last = last + a
+
+        # stack = []
+        # for b in B:
+            # if len(stack) == 0:
+                # if b <= 0:
+                    # continue
+                # else:
+                    # stack.append(b)
+            # else:
+                # b > 0:
+
+        if ans:
+            print('YES')
+        else:
+            print('NO')
+        
 
 ##################################
 # Region FastIO

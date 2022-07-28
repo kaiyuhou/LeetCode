@@ -1,3 +1,11 @@
+# Problem: Twisty Little Passages
+# Contest: Google Coding Competitions - Qualification Round 2022 - Code Jam 2022
+# URL: https://codingcompetitions.withgoogle.com/codejam/round/0000000000876ff1/0000000000a45fc0
+# Memory Limit: 1024 MB
+# Time Limit: 120000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -6,23 +14,49 @@ from io import BytesIO, IOBase
 
 import collections
 import math
+import random
 
 from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
+    random.seed(T)
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        N, K = map(int, input().split())
+        r, c = map(int, input().split())
+        if K >= N - 1:
+            A = list(range(1, N + 1))
+        else:
+            A = random.sample(range(1, N + 1), K + 1)
+            if r not in A:
+                A = A[:-1]
+        
+        
+            
+        ans = []
+        ans.append(c)
+        for a in A:
+            if a == r:
+                continue
+            print(f'T {a}')
+            sys.stdout.flush()
+            _, c = map(int, input().split())
+            ans.append(c)
+        
+        if K >= N - 1:
+            print(f'E {sum(ans) // 2}')
+        else:
+            ret = sum(ans) * N // ((K + 1) * 2)
+            if ret < ((N  + 1)// 2):
+                ret = (N  + 1)// 2
+            print(f'E {ret}') 
+        sys.stdout.flush()
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

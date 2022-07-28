@@ -1,3 +1,11 @@
+# Problem: Stable Mex
+# Contest: CodeChef - CodeChef Starters 33 Division 4 (Rated)
+# URL: https://www.codechef.com/START33D/problems/STBMEX
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,13 +19,69 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        A = list(set(A))
+        A.sort()
+        n = len(A)
 
+        def MEX(A):
+            ret = 0
+            for a in A:
+                if a == ret:
+                    ret += 1
+            return ret
+            
+        mex = MEX(A)
+        if A[-1] == 0:
+            print(-1)
+            continue
+
+        if mex == A[-1] + 1:
+            print(0)
+            continue
+        
+        if mex == 0:
+            print(A[0] - 1)
+            continue
+
+        if mex == 1:
+            # ans = 0
+            # cur = 0
+            # for i in range(1, n):
+                # if A[i] == cur + 1:
+                    # cur += 1
+                # else:
+                    # ans += A[i] - cur - 1
+                    # cur = A[i]
+            # print(ans)
+            print(-1)
+            continue  
+            
+        ans = 0
+        start_idx = mex
+        cur = -1
+        cur_len = 0
+        for i in range(start_idx, n):
+            if cur == -1:
+                cur = A[i]
+                cur_len = 1
+            else:
+                if A[i] == cur + 1:
+                    cur += 1
+                    cur_len += 1
+                else:
+                    if cur_len >= mex - 1:
+                        ans += 1
+                    cur = A[i]
+                    cur_len = 1
+        
+        if cur_len >= mex - 1:
+            ans += 1
+        
+        print(ans)
 
 ##################################
 # Region FastIO

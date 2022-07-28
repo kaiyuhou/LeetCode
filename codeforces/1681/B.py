@@ -1,3 +1,11 @@
+# Problem: B. Card Trick
+# Contest: Codeforces - Educational Codeforces Round 129 (Rated for Div. 2)
+# URL: https://codeforces.com/contest/1681/problem/B
+# Memory Limit: 256 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -17,7 +25,11 @@ def main():
         # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
-
+        m = int(input())
+        B = list(map(int, input().split()))
+        idx = sum(B) % n
+        print(A[idx])
+        
 
 ##################################
 # Region FastIO

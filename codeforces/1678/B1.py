@@ -1,3 +1,11 @@
+# Problem: B1. Tokitsukaze and Good 01-String (easy version)
+# Contest: Codeforces - Codeforces Round #789 (Div. 2)
+# URL: https://codeforces.com/contest/1678/problem/B1
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -16,8 +24,18 @@ def main():
     for _ in range(T):
         # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
-
+        S = input()
+        last = S[0]
+        ans = 0
+        for i in range(1, n):
+            if S[i] == last:
+                continue
+            else:
+                if i % 2 == 0:
+                    last = S[i]
+                else:
+                    ans += 1
+        print(ans)
 
 ##################################
 # Region FastIO

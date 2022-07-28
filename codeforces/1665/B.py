@@ -1,3 +1,11 @@
+# Problem: B. Array Cloning Technique
+# Contest: Codeforces - Codeforces Round #781 (Div. 2)
+# URL: https://codeforces.com/contest/1665/problem/B
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,13 +19,21 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
-
+        C = collections.Counter(A)
+        _, cnt = C.most_common(1)[0]
+        ans = 0
+        while cnt < n:
+            ans += 1
+            if cnt * 2 <= n:
+                ans += cnt
+            else:
+                ans += n - cnt
+            cnt *= 2
+        print(ans)
 
 ##################################
 # Region FastIO

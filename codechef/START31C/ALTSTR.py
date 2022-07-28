@@ -1,3 +1,11 @@
+# Problem: Alternating String
+# Contest: CodeChef - CodeChef Starters 31 Division 3 (Rated)
+# URL: https://www.codechef.com/START31C/problems/ALTSTR
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,25 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        S = input()
+        C = collections.Counter(S)
+        if C['0'] == 0 or C['1']  == 0:
+            ans = 1
+        elif C['0'] == C['1']:
+            ans = C['0'] * 2
+        # elif C['0'] < C['1']:
+            # ans = C['0'] * 2 + 1
+        else:
+            ans = min(C['0'], C['1']) * 2 + 1
+        print(ans)
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

@@ -1,3 +1,11 @@
+# Problem: Magical Modulo
+# Contest: CodeChef - February Lunchtime 2022 Division 4
+# URL: https://www.codechef.com/LTIME105D/problems/MAGICMOD
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,59 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        small = set()
+        large = set()
+        
+        ans = True
+        for a in A:
+            if a <= n:
+                if a not in small:
+                    small.add(a)
+                else:
+                    ans = False
+                    break
+            else:
+                if a not in large:
+                    large.add(a)
+                else:
+                    ans = False
+                    break
+        
+        
+        if not ans:
+            print('NO')
+            continue
+            
+        if len(small) == n:
+            print(f'YES {n + 1}')
+            continue
+            
+        
+        small_list = list(small)
+        wait = len(small) + 1
+        for i, a in enumerate(small):
+            if a != i + 1:
+                wait = i + 1
+                break
+                
+        first_large = small 
+        
+        
+        
+        
+        
+        
+
+
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

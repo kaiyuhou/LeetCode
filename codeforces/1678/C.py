@@ -1,3 +1,11 @@
+# Problem: C. Tokitsukaze and Strange Inequality
+# Contest: Codeforces - Codeforces Round #789 (Div. 2)
+# URL: https://codeforces.com/contest/1678/problem/C
+# Memory Limit: 256 MB
+# Time Limit: 1500 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -17,6 +25,18 @@ def main():
         # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        neg = 0
+        pos = 0
+        for i in range(n - 1):
+            for j in range(i + 1, n):
+                if A[i] < A[j]:
+                    pos += 1
+                else:
+                    neg += 1
+        print(pos, neg)
+        print(min(pos, neg))
+        
+        
 
 
 ##################################

@@ -1,3 +1,11 @@
+# Problem: B. Dorms War
+# Contest: Codeforces - Codeforces Round #788 (Div. 2)
+# URL: https://codeforces.com/contest/1670/problem/B
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,12 +19,33 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
         # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        S = input()
+        A = list(input().split())
+        A = set(A[1:])
+        m = len(A)
+        cur = 0
+        
+        idx = 0
+        ans = 0
+        while idx < n:
+            if S[idx] in A:
+               ans = idx
+               break 
+            idx += 1
+        
+        for i in range(idx + 1, n):
+            c = S[i]
+            if c not in A:
+                cur += 1
+            else:
+                if cur >= ans:
+                     ans += (cur - ans) + 1
+                cur = 0
+        print(ans) 
 
 
 ##################################

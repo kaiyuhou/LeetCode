@@ -11,18 +11,38 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
+    nxt = {
+        0: (1, 2),
+        1: (0, 2),
+        2: (0, 3),
+        3: (0, 2)
+    }
+    sign = [1, -1, -1, 1]
+    
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
-
+        dp = collections.defaultdict(lambda: float('-inf'))
+        
+        
+        dp[0, 0] = A[0]
+        
+        for i in range(1, n):
+            for state in range(4):
+                for nxt_state in nxt[state]:
+                    dp[i, nxt_state] = max(dp[i, nxt_state], sign[nxt_state] * A[i] + dp[i - 1, state])
+                    
+        ans = dp[n - 1, 0]
+        for i in range(4):
+            ans = max(ans, dp[n - 1, i])
+        
+        print(ans)
+    
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

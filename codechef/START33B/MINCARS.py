@@ -1,3 +1,11 @@
+# Problem: Minimum Cars required
+# Contest: CodeChef - CodeChef Starters 33 Division 4 (Rated)
+# URL: https://www.codechef.com/START33D/problems/MINCARS
+# Memory Limit: 256 MB
+# Time Limit: 500 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,13 +19,13 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
-
+        print((n + 3) // 4)
+        
+        
+        
 
 ##################################
 # Region FastIO

@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import os
 import sys
 from io import BytesIO, IOBase
@@ -11,20 +10,34 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
-    T = int(input())
-    for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+    
+    n = int(input())
+    A = list(map(int, input().split()))
 
+    if A[-2] > A[-1]:
+        print(-1)
+        return
+
+    best = A[-2] - A[-1]
+    
+    for i in range(n - 3, -1, -1):
+        if best <= A[i + 1]:
+            print(i + 1)
+            for j in range(i + 1):
+                print('%d %d %d' % (j + 1, i + 2, n))                
+            return
+
+        if A[i] > A[i + 1]:
+            print(-1)
+            return
+    
+        best = A[i] - A[-1]
+    
+    print(0)
+        
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
-##################################
-
+# region fastio
 
 BUFSIZE = 8192
 
@@ -80,4 +93,6 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 # endregion
 
 if __name__ == "__main__":
-    main()
+    T = int(input())
+    for _ in range(T):
+        main()

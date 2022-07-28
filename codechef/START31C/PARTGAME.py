@@ -1,3 +1,11 @@
+# Problem: Pile Partition
+# Contest: CodeChef - CodeChef Starters 31 Division 3 (Rated)
+# URL: https://www.codechef.com/START31C/problems/PARTGAME
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,50 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        if n == 2:
+            if A[0] % 2 == 0 or A[1] % 2 == 0:
+                print('Alice')
+            else:
+                print('Bob')
+            continue
+        
+        alice = False
+        for a in A:
+            if a < n:
+                continue
+            if a <= (n - 1) * n:
+                alice = True
+                break
+            # Bob win if a in 
+            # (n-1)*n + 1 to (n-1)*n + (n-1)
+            # Alice win if a in 
+            # (n-1)*n + (n-1) + 1 to (n-1)*n + (n-1)*(n-1)
+            # everytime, Alice can drop: n - 1 to (n-1)*(n-1)
+            # 
+            a_rest = a - (n - 1) * n
+            n12 = (n - 1) * (n - 1)
+            turn = (a_rest + (n12 - 1)) // n12
+            rest = a_rest % n12
+            # print(turn, rest)
+            if turn % 2 == 1:
+                if (n - 1) + 1 <= rest < n12 or rest == 0:
+                    alice = True
+                    break
+            else:
+                if 1 <= rest <= n - 1:
+                    alice = True
+                    break
+        
+        print('Alice' if alice else 'Bob')
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

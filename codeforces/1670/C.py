@@ -1,3 +1,11 @@
+# Problem: C. Where is the Pizza?
+# Contest: Codeforces - Codeforces Round #788 (Div. 2)
+# URL: https://codeforces.com/contest/1670/problem/C
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,12 +19,56 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
         # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        B = list(map(int, input().split()))
+        C = list(map(int, input().split()))
+        A2idx = {}
+        B2idx = {}
+        for i, a in enumerate(A):
+            A2idx[a] = i
+        for i, b in enumerate(B):
+            B2idx[b] = i
+                
+        for i in range(n):
+            if C[i] == 0:
+                continue
+            if A[i] == B[i]:
+                continue
+                
+            if C[i] == A[i]:
+                D = A
+                D2idx = B2idx
+            else:
+                D = B
+                D2idx = A2idx
+            next_i = D2idx[D[i]]
+            while C[next_i] == 0:
+                C[next_i] = D[next_i]
+                next_i = D2idx[D[next_i]]
+
+        ans = 1
+        Mod = 1000000007
+        for i in range(n):
+            if C[i] != 0:
+                continue
+            if A[i] == B[i]:
+                C[i] = A[i]
+                continue
+            ans *= 2
+            ans %= Mod
+            C[i] = A[i]
+            D = A
+            D2idx = B2idx
+            next_i = D2idx[D[i]]
+            while C[next_i] == 0:
+                C[next_i] = D[next_i]
+                next_i = D2idx[D[next_i]]
+        
+        print(ans % Mod)
 
 
 ##################################

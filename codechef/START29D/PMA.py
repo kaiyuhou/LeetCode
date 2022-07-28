@@ -1,3 +1,11 @@
+# Problem: Plusle and Minun on Array
+# Contest: CodeChef - CodeChef Starters 29 Division 4 (Rated)
+# URL: https://www.codechef.com/START29D/problems/PMA
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,32 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        ans = 0
+        neg_max = 0
+        pos_min = float('inf')
+        
+        for i, a in enumerate(A):
+            a = abs(a)
+            if i % 2 == 0:
+                ans += a
+                pos_min = min(a, pos_min)
+            else:
+                ans -= a
+                neg_max = max(a, neg_max)
+        
+        swap_ans = ans + 2 * neg_max - 2 * pos_min
+        print(max(ans, swap_ans))
+        
+
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

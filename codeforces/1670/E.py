@@ -1,3 +1,11 @@
+# Problem: E. Hemose on the Tree
+# Contest: Codeforces - Codeforces Round #788 (Div. 2)
+# URL: https://codeforces.com/contest/1670/problem/E
+# Memory Limit: 256 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,7 +19,6 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
         # a, b = map(int, input().split())

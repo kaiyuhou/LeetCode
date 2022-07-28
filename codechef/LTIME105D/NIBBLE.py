@@ -1,3 +1,11 @@
+# Problem: Good Program
+# Contest: CodeChef - February Lunchtime 2022 Division 4
+# URL: https://www.codechef.com/LTIME105D/problems/NIBBLE
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,18 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        if n % 4 == 0:
+            print('Good')
+        else:
+            print('Not Good')
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

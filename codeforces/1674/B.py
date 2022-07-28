@@ -1,3 +1,11 @@
+# Problem: B. Dictionary
+# Contest: Codeforces - Codeforces Round #786 (Div. 3)
+# URL: https://codeforces.com/contest/1674/problem/B
+# Memory Limit: 512 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,13 +19,20 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
-
+        S = input()
+        dp = {}
+        for i in range(26):
+            for j in range(26): 
+                if i == j:
+                    continue
+                a = chr(i + 97)
+                b = chr(j + 97)
+                # print(a, b)
+                dp[a + b] = len(dp) + 1
+        print(dp[S])
+                
 
 ##################################
 # Region FastIO

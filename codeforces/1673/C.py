@@ -1,3 +1,11 @@
+# Problem: C. Palindrome Basis
+# Contest: Codeforces - Codeforces Round #785 (Div. 2)
+# URL: https://codeforces.com/contest/1673/problem/C
+# Memory Limit: 256 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,12 +19,48 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
+    a = 50000
+    candi = [i for i in range(1, a + 1) if i == int(str(i)[::-1])]
+    # candi = candi[::-1]
+    n = len(candi)
+    ans = 0
+    MOD = 1000000007              
+
+    # 133 ms
+    # dp = [0] * ((a + 1) * (n + 1))
+
+    # 256 ms
+    dp = [[0] * (n + 1) for _ in range(a + 1)]
+
+    # print(a, n, a * n)
+    # 10000 198 1980000
+    # 50000 598 29900000
+
+    # 353 ms
+    # for i in range(a + 1):
+        # for j in range(n + 1):
+            # dp[i][j] = 1
+
+    # 160 ms
+    # for i in range((a + 1) * (n + 1)):
+        # dp[i] = 1
+
+    for i in range(n):
+        dp[0][i] = 1
+              
+    for rest in range(1, a + 1):
+        for candi_idx in range(n -1, -1, -1):
+            # 337 ms
+            dp[rest][candi_idx] = dp[rest][candi_idx + 1]
+            if rest - candi[candi_idx] < 0:
+                continue
+            dp[rest][candi_idx] += dp[rest - candi[candi_idx]][candi_idx]
+            dp[rest][candi_idx] %= MOD
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        a = int(input())
+        print(dp[a][0])
+        
 
 
 ##################################

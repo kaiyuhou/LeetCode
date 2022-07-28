@@ -1,3 +1,11 @@
+# Problem: String protocol
+# Contest: CodeChef - CodeChef Starters 29 Division 4 (Rated)
+# URL: https://www.codechef.com/START29D/problems/STRP
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,25 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        S = input()
+        i = 0
+        ans = 0
+        while i < n:
+            if i < n - 1 and S[i] == S[i + 1]:
+                ans += 1
+                i += 2
+            else:
+                ans += 1
+                i += 1
+        print(ans) 
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

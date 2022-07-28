@@ -1,3 +1,11 @@
+# Problem: B. Shoe Shuffling
+# Contest: Codeforces - CodeCraft-22 and Codeforces Round #795 (Div. 2)
+# URL: https://codeforces.com/contest/1691/problem/B
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -17,6 +25,26 @@ def main():
         # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        C = collections.Counter(A)
+        last = {}
+        for c in C:
+            last[c] = -2
+        for i, a in enumerate(A):
+            if last[a] == -2:
+                last[a] = -1
+            else:
+                last[a] = i
+        
+        for _, v in last.items():
+            if v == -1:
+                print(-1)
+                break
+        else:
+            ans = [0] * n
+            for i, a in enumerate(A):
+                ans[i] = last[a] + 1
+                last[a] = i
+            print(*ans)
 
 
 ##################################

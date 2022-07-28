@@ -11,18 +11,50 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        A, B = map(int, input().split())
+        if A >= B:
+            print(A - B)
+            continue
+        
+        ans = B - A
+        if A | B == B:
+            ans = 1
+        elif ((A + 1) | B == B) or ((B + 1) | A == (B + 1)):
+            ans = min(ans, 2)           
+        else: # B = 101000, A =100100, ans = 2 
+            BS = bin(B)[2:]
+            n = len(BS)
+            AS = bin(A)[2:]
+            AS = '0' * (n - len(AS)) + AS
+            
+            last_1_in_B = None  
+            for i in range(n):
+                if BS[i] == '1':
+                    last_1_in_B = i
+
+            # print(AS, BS, last_1_in_B)
+            
+            for i in range(0, last_1_in_B + 1):
+                if BS[i] == '0' and AS[i] == '1':
+                    # print(i)
+                    break
+                if i == last_1_in_B and AS[i] == '1':  # 00110 10100 3
+                    break
+            else:
+                ans = min(ans, 2)
+        
+            ans = min(ans, 3)
+        
+        print(ans)
+        
+        
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

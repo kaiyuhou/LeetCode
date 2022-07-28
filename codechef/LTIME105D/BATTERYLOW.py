@@ -1,3 +1,11 @@
+# Problem: Battery Low
+# Contest: CodeChef - February Lunchtime 2022 Division 4
+# URL: https://www.codechef.com/LTIME105D/problems/BATTERYLOW
+# Memory Limit: 256 MB
+# Time Limit: 500 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,17 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
-
+        if n <= 15:
+            print('Yes')
+        else:
+            print('No')
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

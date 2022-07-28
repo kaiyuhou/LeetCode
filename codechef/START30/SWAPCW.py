@@ -1,3 +1,11 @@
+# Problem: Swapping Chefs Way
+# Contest: CodeChef - CodeChef Starters 30 Division 3 (Rated)
+# URL: https://www.codechef.com/START30C/problems/SWAPCW
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,31 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
-
+        S = input()
+        A = [None] * n
+        for i in range((n + 1) // 2):
+            if S[i] > S[n - i - 1]:
+                A[i], A[n - i - 1] = S[n - i - 1], S[i]
+            else:
+                A[i], A[n - i - 1] = S[i], S[n - i - 1]
+        if A == sorted(A):
+            print('YES')
+        else:
+            print('NO')
+        
+        
+            
+        
+        
+        
+        
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

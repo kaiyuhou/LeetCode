@@ -1,3 +1,11 @@
+# Problem: Magnet Sort
+# Contest: CodeChef - February Lunchtime 2022 Division 4
+# URL: https://www.codechef.com/LTIME105D/problems/MAGNETSORT
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,61 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        S = input()
+
+        B = sorted(A)
+        
+        if A == B:
+            print(0)
+            continue
+
+        C = collections.Counter(S)
+        if C['N'] == 0 or C['S'] == 0:
+            print(-1)
+            continue
+
+        pre_S, pre_N = False, False
+        for i in range(n):
+            if A[i] == B[i]:
+                if S[i] == 'S':
+                    pre_S = True
+                else:
+                    pre_N = True
+            else:
+                if S[i] == 'S':
+                    pre_S = True
+                else:
+                    pre_N = True
+                break
+                
+        sur_S, sur_N = False, False
+        for i in range(n - 1, -1, -1):
+            if A[i] == B[i]:
+                if S[i] == 'S':
+                    sur_S = True
+                else:
+                    sur_N = True
+            else:
+                if S[i] == 'S':
+                    sur_S = True
+                else:
+                    sur_N = True
+                break
+                
+        if (pre_S and sur_N) or (pre_N and sur_S):
+            print(1)
+        else:
+            print(2)
+        
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

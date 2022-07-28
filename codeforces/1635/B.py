@@ -1,30 +1,34 @@
-#!/usr/bin/env python
 import os
 import sys
 from io import BytesIO, IOBase
-# sys.setrecursionlimit(100000)
-
-import collections
-import math
-
-from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
-    T = int(input())
-    for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+    n = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+
+    if n == 2:
+        print(0)
+        print(*A)
+        return
+
+    for i in range(1, n - 2):
+        if A[i] > A[i - 1] and A[i] > A[i + 1]:
+            ans += 1
+            A[i + 1] = max(A[i], A[i + 2])
+    
+    if A[-2] > A[-3] and A[-2] > A[-1]:
+        ans += 1
+        A[-1] = A[-2]
+    
+    print(ans)
+    print(*A)    
+
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
-##################################
-
+# region fastio
 
 BUFSIZE = 8192
 
@@ -79,5 +83,6 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 
 # endregion
 
-if __name__ == "__main__":
+T = int(input())
+for _ in range(T):
     main()

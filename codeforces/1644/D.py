@@ -1,3 +1,11 @@
+# Problem: D. Cross Coloring
+# Contest: Codeforces - Educational Codeforces Round 123 (Rated for Div. 2)
+# URL: https://codeforces.com/contest/1644/problem/D
+# Memory Limit: 256 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,68 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
+    X = [-1] * (2 * 100000)
+    Y = [-1] * (2 * 100000)
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        n, m, k, q = map(int, input().split())
+        ops = [list(map(int, input().split())) for _ in range(q)]
+#         
+        # X, Y = set(), set()
+        # cnt = 0
+        # for x, y in ops[::-1]:
+            # if x not in X or y not in Y:
+                # X.add(x)
+                # Y.add(y)
+                # cnt += 1
+            # if len(X) == n or len(Y) == m:
+                # break
+#             
+        # mod = 998244353
+        # print(pow(k, cnt, mod))
+
+        
+        for i, (x, y) in enumerate(ops):
+            X[x - 1] = i
+            Y[y - 1] = i
+        
+        minx = q
+        miny = q
+        for x in X:
+            minx = min(x, minx)
+            if x == -1:
+                break
+        for y in Y:
+            miny = min(x, miny)
+            if y == -1:
+                break
+                       
+            
+        minx, miny = min(X), min(Y)
+        mi = max(minx, miny)
+                 
+        dp = set()
+        
+        for x in X:
+            if x != -1 and x >= mi:
+                dp.add(x)
+ 
+                    
+        for y in Y:
+            if y != -1 and y >= mi:
+                dp.add(y)
+        
+        total = len(dp)
+        mod = 998244353
+        
+        print(pow(k, total, mod))
+        
+
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

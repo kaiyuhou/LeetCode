@@ -1,3 +1,11 @@
+# Problem: Balanced Reversals
+# Contest: CodeChef - CodeChef Starters 30 Division 3 (Rated)
+# URL: https://www.codechef.com/START30C/problems/BALREV
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,20 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        S = input()
+        C = collections.Counter(S)
+        ans = '0' * C['0'] + '1' * C['1']
+        print(ans)
+        
+        
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

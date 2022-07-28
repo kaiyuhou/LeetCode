@@ -1,3 +1,11 @@
+# Problem: Minimum Coloring
+# Contest: CodeChef - CodeChef Starters 30 Division 3 (Rated)
+# URL: https://www.codechef.com/START30C/problems/MINCOLOR
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,60 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
-
+        n, m = map(int, input().split())
+        x1, y1 = map(int, input().split())
+        x2, y2 = map(int, input().split())
+        
+        dis = abs(x1 - x2) + abs(y1 - y2)
+        if dis % 2 == 1:
+            if (x1 + y1) % 2 == 0:
+                p = ('1', '2')
+            else:
+                p = ('2', '1')
+                
+            
+            line1 = [p[i % 2] for i in range(m)]
+            line2 = [p[1 - i % 2] for i in range(m)]
+            line1 = ' '.join(line1)
+            line2 = ' '.join(line2)
+        
+            for i in range(n):
+                if i % 2 == 0:
+                    print(line1)
+                else:
+                    print(line2)
+        else:
+            if (x1 + y1) % 2 == 0:
+                p = ('1', '3')
+            else:
+                p = ('3', '1')
+            l1 = [p[i % 2] for i in range(m)]
+            l2 = [p[1 - i % 2] for i in range(m)]
+            line1 = ' '.join(l1)
+            line2 = ' '.join(l2)
+            
+            for i in range(n):
+                if i % 2 == 0:
+                    if i != x2 - 1:
+                        print(line1)
+                    else:
+                        l1[y2 - 1] = "2"
+                        print(' '.join(l1))
+                else:
+                    if i != x2 - 1:
+                        print(line2)
+                    else:
+                        l2[y2 - 1] = '2'
+                        print(' '.join(l2))
+                    
+ 
+        
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

@@ -1,3 +1,11 @@
+# Problem: Doubled Distances
+# Contest: CodeChef - May Cook-Off 2022 Division 3 (Rated)
+# URL: https://www.codechef.com/COOK141C/problems/DOUBLEDDIST
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,13 +19,24 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
         # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
-
+        A.sort()
+        for i in range(n - 2):
+            first = A[i + 1] - A[i]
+            second = A[i + 2] - A[i + 1]
+            if first * 2 == second or second * 2 == first:
+                continue
+            else:
+                break
+        else:
+            print('Yes')
+            continue
+        print('No')
+        
 
 ##################################
 # Region FastIO

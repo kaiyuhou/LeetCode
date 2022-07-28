@@ -1,3 +1,11 @@
+# Problem: Prefix Suffix Operations
+# Contest: CodeChef - CodeChef Starters 30 Division 3 (Rated)
+# URL: https://www.codechef.com/START30C/problems/PRESUFOP
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,96 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        B = list(map(int, input().split()))
+
+        D = [B[i] - A[i] for i in range(n)]
+        if min(D) < 0:
+            print(-1)
+            continue
+        
+        for i in range(n - 1):
+            if D[i] < D[i + 1]:
+                break
+        else:
+            print(D[0])
+            continue
+        
+        for i in range(n - 1):
+            if D[i] > D[i + 1]:
+                break
+        else:
+            print(D[-1])
+            continue
+            
+        left_most = 0
+        for i in range(n - 1):
+            if D[i] >= D[i + 1]:
+                left_most = i + 1
+            else:
+                break
+        
+        for i in range(left_most + 1, n):
+            if D[i] >= D[left_most]:
+                D[i] -= D[left_most]
+            else:
+                break
+        
+        ans = D[0]    
+        for i in range(left_most):
+            D[i] = 0
+        
+        print(left_most, D)
+        
+        
+        for i in range(n - 1):
+            if D[i] > D[i + 1]:
+                print(-1)
+                break
+        else:
+            print(D[-1] + ans)
+            continue
+                
+        
+        
+        
+        
+            
+        
+                
+                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                
+
+
+        
+        
+                
+        
+        
+        
+        
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

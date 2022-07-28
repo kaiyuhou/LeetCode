@@ -1,3 +1,11 @@
+# Problem: B. Anti-Fibonacci Permutation
+# Contest: Codeforces - Educational Codeforces Round 123 (Rated for Div. 2)
+# URL: https://codeforces.com/contest/1644/problem/B
+# Memory Limit: 256 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -6,23 +14,31 @@ from io import BytesIO, IOBase
 
 import collections
 import math
+import itertools
 
 from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        A = [n - i for i in range(n)]
+        ans = 0
+        for a in itertools.permutations(A):
+            for i in range(n - 2):
+                if a[i] + a[i + 1] == a[i + 2]:
+                    break
+            else:
+                print(*a)
+                ans += 1
+                if ans == n:
+                    break
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

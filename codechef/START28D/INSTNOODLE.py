@@ -1,3 +1,11 @@
+# Problem: Chef and Instant Noodles
+# Contest: CodeChef - CodeChef Starters 28 Division 4 (Rated)
+# URL: https://www.codechef.com/START28D/problems/INSTNOODLE
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,13 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
-    T = int(input())
-    for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
-
+    A, B = map(int, input().split())
+    ans = A * B
+    print(ans)
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

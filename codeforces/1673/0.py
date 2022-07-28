@@ -1,3 +1,11 @@
+# Problem: A. Subtle Substring Subtraction
+# Contest: Codeforces - Codeforces Round #785 (Div. 2)
+# URL: https://codeforces.com/contest/1673/problem/0
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,12 +19,22 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
         # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
+        S = input()
+        A = [ord(c) - 96 for c in S]
+        if len(A) == 1:
+            print('Bob', sum(A))
+        elif len(A) % 2 == 0:
+            print('Alice', sum(A))
+        else:
+            AA = sum(A[:-1])
+            B = A[-1]
+            if sum(A[1:]) > AA:
+                AA = sum(A[1:])
+                B = A[0]
+            print('Alice', AA - B)
 
 
 ##################################

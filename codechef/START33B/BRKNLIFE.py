@@ -1,3 +1,11 @@
+# Problem: Broken Life
+# Contest: CodeChef - CodeChef Starters 33 Division 4 (Rated)
+# URL: https://www.codechef.com/START33D/problems/BRKNLIFE
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,14 +19,37 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
-
-
+        n, m = map(int, input().split())
+        S = input()
+        A = input()
+        idA = 0
+        ans = []
+        if A[idA] == 'a':
+            nxtS = 'b'
+        else:
+            nxtS = 'a'
+                
+        for c in S:
+            if c == '?':
+                ans.append(nxtS)
+            else:
+                ans.append(c)
+                if c == A[idA]:
+                    idA += 1
+                    if idA == m:
+                        break
+                    if A[idA] == 'a':
+                        nxtS = 'b'
+                    else:
+                        nxtS = 'a'
+        
+        if idA == m:
+            print(-1)
+        else:
+            print(''.join(ans))
+                    
 ##################################
 # Region FastIO
 # * code below is for accelerating IO in Python

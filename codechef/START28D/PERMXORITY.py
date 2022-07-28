@@ -1,3 +1,11 @@
+# Problem: Permutation Xority
+# Contest: CodeChef - CodeChef Starters 28 Division 4 (Rated)
+# URL: https://www.codechef.com/START28D/problems/PERMXORITY
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,29 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        if n <= 2 :
+            print(-1)
+            continue
+            
+        ans = [i + 1 for i in range(n)]
+            
+        if n % 2 == 1:
+            print(*ans)
+            continue
+
+        ans[0] = 2
+        ans[1] = 3
+        ans[2] = 1
+        print(*ans)
+        
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

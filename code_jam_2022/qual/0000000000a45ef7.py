@@ -1,3 +1,11 @@
+# Problem: Chain Reactions
+# Contest: Google Coding Competitions - Qualification Round 2022 - Code Jam 2022
+# URL: https://codingcompetitions.withgoogle.com/codejam/round/0000000000876ff1/0000000000a45ef7
+# Memory Limit: 1024 MB
+# Time Limit: 5000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,36 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
-    for _ in range(T):
+    for t in range(T):
         # a, b = map(int, input().split())
         n = int(input())
-        A = list(map(int, input().split()))
+        F = list(map(int, input().split()))
+        P = list(map(int, input().split()))
+        P = [p - 1 for p in P]
+
+        Deg = collections.Counter(P)
+        Before = collections.defaultdict(list)
+        ans = 0
+        for i in range(n - 1, -1, -1):
+            if Deg[i] > 1:
+                ans += sum(Before[i]) - min(Before[i])
+                F[i] = max(F[i], min(Before[i]))
+        
+            nxt = P[i]
+            if nxt == -1:
+                ans += F[i]
+                continue
+            if Deg[nxt] == 1:
+                F[nxt] = max(F[i], F[nxt])
+                continue
+            Before[nxt].append(F[i])
+        print(f'Case #{t + 1}: {ans}')
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

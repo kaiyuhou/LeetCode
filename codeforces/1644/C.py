@@ -1,3 +1,11 @@
+# Problem: C. Increase Subarray Sums
+# Contest: Codeforces - Educational Codeforces Round 123 (Rated for Div. 2)
+# URL: https://codeforces.com/contest/1644/problem/C
+# Memory Limit: 256 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,18 +19,33 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
+        n, x = map(int, input().split())
         A = list(map(int, input().split()))
+        
+        ans = [-math.inf] * (n + 1)
+        ans[0] = 0
+        
+        for i in range(n):
+            cur = 0
+            for j in range(i, n):
+                cur += A[j]
+                ans[j - i + 1] = max(cur, ans[j - i + 1])
+
+        
+        ret = [0] * (n + 1)
+        for k in range(n + 1):
+            cur = 0
+            for i in range(n + 1):
+                cur = max(cur, ans[i] + x * min(k, i))
+            ret[k] = cur
+        print(*ret)
 
 
 ##################################
-# Region FastIO
-# * code below is for accelerating IO in Python
-# * not directly related to the solution
+# region fastio
+# not my code
 ##################################
 
 

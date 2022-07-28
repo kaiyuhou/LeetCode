@@ -1,3 +1,11 @@
+# Problem: C. Infinite Replacement
+# Contest: Codeforces - Codeforces Round #786 (Div. 3)
+# URL: https://codeforces.com/contest/1674/problem/C
+# Memory Limit: 256 MB
+# Time Limit: 2000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,13 +19,17 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
-        A = list(map(int, input().split()))
-
+        A = input()
+        B = input()
+        if 'a' in B:
+            if len(B) == 1:
+                print(1)
+            else:
+                print(-1)
+            continue
+        print(2 ** len(A))
 
 ##################################
 # Region FastIO

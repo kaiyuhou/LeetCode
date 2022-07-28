@@ -1,3 +1,11 @@
+# Problem: A. Prof. Slim
+# Contest: Codeforces - Codeforces Round #788 (Div. 2)
+# URL: https://codeforces.com/contest/1670/problem/0
+# Memory Limit: 256 MB
+# Time Limit: 1000 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,12 +19,26 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
         # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        left = 0
+        right = n - 1
+        while left < right:
+            while left < n and A[left] < 0:
+                left += 1
+            while right >=0 and A[right] >=0:
+                right -= 1
+            if left >= right:
+                break
+            A[left] = -A[left]
+            A[right] = -A[right]
+        if A == sorted(A):
+            print('YES')
+        else:
+            print('NO')
 
 
 ##################################

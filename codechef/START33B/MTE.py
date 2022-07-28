@@ -1,3 +1,11 @@
+# Problem: Make Them Equal
+# Contest: CodeChef - CodeChef Starters 33 Division 4 (Rated)
+# URL: https://www.codechef.com/START33D/problems/MTE
+# Memory Limit: 256 MB
+# Time Limit: 500 ms
+# 
+# Powered by CP Editor (https://cpeditor.org)
+
 #!/usr/bin/env python
 import os
 import sys
@@ -11,12 +19,25 @@ from functools import lru_cache
 
 
 def main():
-    MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
         n = int(input())
         A = list(map(int, input().split()))
+        even, odd = 0, 0
+        for a in A:
+            if a % 2 == 0:
+                even += 1
+            else:
+                odd += 1
+        if even == 0 or odd == 0:
+            print(0)
+        elif odd % 2 == 1:
+            print(even)
+        else:
+            ans = odd // 2
+            ans = min(ans, even)
+            print(ans)
+        
 
 
 ##################################
