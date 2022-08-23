@@ -63,71 +63,71 @@ MOD = 1000000007
 # s = Solution()
 # print(s.minNumberOfHours(1,1,energy, experience))
 
-# class Solution:
-#     def largestPalindromic(self, num: str) -> str:
-#         C = collections.Counter(num)
-#         ans = ''
-#         for i in range(9, -1, -1):
-#             c = str(i)
-#             if c not in C:
-#                 continue
-#             if c == '0' and not ans:
-#                 break
-#             ans += c * (C[c] // 2)
-#         ex = ''
-#         for i in range(9, -1, -1):
-#             c = str(i)
-#             if c not in C:
-#                 continue
-#             if C[c] % 2 == 1:
-#                 ex = c
-#                 break
-#         ans = ans + ex + ans[::-1]
-#         if ans == '':
-#             ans = '0'
-#         return ans
-#
-# num = "444947137"
-# num = "00009"
-# num = "00"
-# s = Solution()
-# print(s.largestPalindromic(num))
-
 class Solution:
-    def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
-        startNode = None
-        nodes = {}
-
-        def visit(root, par):
-            if root == None:
-                return
-
-            nonlocal startNode
-            if root.val == start:
-                startNode = root
-
-            nodes[root] = (par, root.left, root.right)
-            visit(root.left, root)
-            visit(root.right, root)
-
-        visit(root, None)
-
-        V = set()
-        ans = 0
-
-        def dfs(cur, step):
-            nonlocal ans
-            if not cur:
-                return
-
-            ans = max(ans, step)
-            for nxt in nodes[cur]:
-                if nxt and nxt not in V:
-                    V.add(nxt)
-                    dfs(nxt, step + 1)
-        V.add(startNode)
-        dfs(startNode, 0)
+    def largestPalindromic(self, num: str) -> str:
+        C = collections.Counter(num)
+        ans = ''
+        for i in range(9, -1, -1):
+            c = str(i)
+            if c not in C:
+                continue
+            if c == '0' and not ans:
+                break
+            ans += c * (C[c] // 2)
+        ex = ''
+        for i in range(9, -1, -1):
+            c = str(i)
+            if c not in C:
+                continue
+            if C[c] % 2 == 1:
+                ex = c
+                break
+        ans = ans + ex + ans[::-1]
+        if ans == '':
+            ans = '0'
         return ans
+#
+num = "444947137"
+num = "00009"
+num = "00"
+s = Solution()
+print(s.largestPalindromic(num))
+
+# class Solution:
+#     def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
+#         startNode = None
+#         nodes = {}
+
+#         def visit(root, par):
+#             if root == None:
+#                 return
+
+#             nonlocal startNode
+#             if root.val == start:
+#                 startNode = root
+
+#             nodes[root] = (par, root.left, root.right)
+#             visit(root.left, root)
+#             visit(root.right, root)
+
+#         visit(root, None)
+
+#         V = set()
+#         ans = 0
+
+#         def dfs(cur, step):
+#             nonlocal ans
+#             if not cur:
+#                 return
+
+#             ans = max(ans, step)
+#             for nxt in nodes[cur]:
+#                 if nxt and nxt not in V:
+#                     V.add(nxt)
+#                     dfs(nxt, step + 1)
+#         V.add(startNode)
+#         dfs(startNode, 0)
+#         return ans
 
 
 
