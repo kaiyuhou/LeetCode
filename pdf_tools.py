@@ -18,7 +18,7 @@
 from pdf2image import convert_from_path
 import os
 
-pages = convert_from_path('D:/a.pdf', dpi=200, poppler_path='C:/poppler-0.68.0_x86/poppler-0.68.0/bin')
+pages = convert_from_path('D:/I20.pdf', dpi=200, poppler_path='C:/Users/mikew/Desktop/poppler-0.68.0_x86/poppler-0.68.0/bin')
 
 for i, page in enumerate(pages):
     page.save(f'D:/out_{i}.jpg', 'JPEG')

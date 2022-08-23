@@ -1,8 +1,8 @@
-# Problem: D. Max GEQ Sum
-# Contest: Codeforces - CodeCraft-22 and Codeforces Round #795 (Div. 2)
-# URL: https://codeforces.com/contest/1691/problem/D
+# Problem: C. Fighting Tournament
+# Contest: Codeforces - Codeforces Round #814 (Div. 2)
+# URL: https://codeforces.com/contest/1719/problem/C
 # Memory Limit: 256 MB
-# Time Limit: 1500 ms
+# Time Limit: 2000 ms
 # 
 # Powered by CP Editor (https://cpeditor.org)
 
@@ -22,96 +22,44 @@ def main():
     MOD = 1000000007
     T = int(input())
     for _ in range(T):
-        # a, b = map(int, input().split())
-        n = int(input())
+        n, q = map(int, input().split())
         A = list(map(int, input().split()))
-        ans = True
-        for i in range(n - 1):
-            if A[i] > 0 and A[i + 1]> 0:
-                print('NO')
-                ans = False
-        if not ans:
-            continue
+        nxt = [0] * n
 
-        B = [A[0]]
-        for i in range(1, n):
-            if A[i] <= 0 and B[-1] <= 0:
-                B[-1] += A[i]
-            else:
-                B.append(A[i])
-        
-        if B[0] <= 0:
-            B = B[1:]
-        if B[-1] <= 0
-            B = B[:-1]
-            
-        C = []
-        for i, b in enumerate(B):
-            if not C:
-                C.append(b)
-            else:
-                if b <= 0:
-                    if C[-1] <= 0:
-                        C[-1] += b
-                    else:
-                        C.append(b)
-                else:
-                    if i < n - 1:
-                        if b <= abs(C[-1]) and b <= abs()
-                
-                
-                
-            
-            
-        
-            
-
-
-        
-        A = B
-        n = len(B)
-
-        last = A[0]
-        ma = A[0]
-
-        for i in range(1, n):
-            a = A[i]
-            if a > 0:
-                if last <= 0:
-                    last = a
-                    ma = a
-                else:
-                    if (last + a) > max(ma, a):
-                        ans = False
-                        break
-                    if a > abs(A[i-1]):
-                        ans = False
-                        break
-                      
-                    last = last + a
-                    ma = max(ma, a)
-            else:
-                if last + a <= 0:
-                    last = a
-                    ma = 0
-                else:
-                    last = last + a
-
-        # stack = []
-        # for b in B:
-            # if len(stack) == 0:
-                # if b <= 0:
-                    # continue
-                # else:
-                    # stack.append(b)
-            # else:
-                # b > 0:
-
-        if ans:
-            print('YES')
+        if A[0] > A[1]:
+            cur_max = A[0]
+            cur_idx = 0
         else:
-            print('NO')
+            cur_max = A[1]
+            cur_idx = 1
         
+        cur_win = 1
+        for i in range(2, n):
+            if cur_max > A[i]:
+                cur_win += 1
+            else:
+                nxt[cur_idx] = cur_win
+                cur_win = 1
+                cur_max = A[i]
+                cur_idx = i
+        
+        nxt[cur_idx] = -1
+        
+        for _ in range(q):
+            idx, k = map(int, input().split())
+            idx -= 1
+            if nxt[idx] == 0:
+                print(0)
+                continue
+            if idx > 0:
+                k -= idx - 1
+            k = max(0, k)
+            if nxt[idx] == -1:
+                print(k)
+                continue
+            else:
+                print(min(nxt[idx], k))
+
 
 ##################################
 # Region FastIO
