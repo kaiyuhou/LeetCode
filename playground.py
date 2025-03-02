@@ -12,13 +12,6 @@ class Node:
         return str(self.a)
 
 
-A = []
-for i in range(10):
-    A.append(Node(i))
-
-print(A)
-
-A.sort()
-print(A)
-
+a = [1,2,3,4,5]
+print(a[1:-1])
 
